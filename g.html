@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header {
+            background-color: yellow;
+            width: 100%;
+            height: 50px;
+            position: relative;
+        }
+
+        .sub {
+            height: 0;
+            width: 100%;
+            background-color: beige;
+            transition:  3s cubic-bezier(0.19, 1, 0.22, 1);
+            overflow: hidden;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            z-index: 500;
+            visibility: hidden;
+        }
+
+        .sub.h {
+            height: 500px;
+            visibility: visible;
+        }
+
+        @keyframes oe {
+            from {height: 0;display: block;};
+            to {height: 300px;display: none;}; 
+        }
+
+        @keyframes ce {
+            from {height: 300px};
+            to {height: 0}; 
+        }
+        .o {
+            /* transition: 5s; */
+            animation-name: oe;
+            animation-duration: 3s;
+            animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .c {
+            animation-name: ce;
+            animation-duration: 3s;
+            animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+      
+
+        
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <button id="btn">search</button>
+        <div class="sub">
+            <input type="search">
+            <ul>
+                <li>ali</li>
+                <li>dsd</li>
+                <li>dsd</li>
+                <li>sdd</li>
+            </ul>
+        </div>
+    </div>
+    <div class="b">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam eum repellendus non aliquid atque dolorem, corrupti iusto eveniet quo quia quidem velit facilis molestias temporibus ipsa pariatur suscipit eligendi hic deleniti cumque! Voluptate cum reiciendis aliquid quam nesciunt facilis dignissimos voluptates, enim aperiam quae necessitatibus optio sunt eius distinctio sint?</p>
+        <input type="text" name="" id="">
+        <input type="text" name="" id="">
+        <input type="text" name="" id="">
+    </div>
+    <script>
+        let btn = document.querySelector("#btn");
+        let sub = document.querySelector(".sub");
+        btn.addEventListener("click", function(){
+            sub.classList.toggle("h");
+        
+            // if(!btn.classList.contains("on")){
+            //     let box = document.createElement("div");
+            //     btn.classList.toggle("on");
+            //     box.classList.add("o");
+            //     box.id = "new";
+            //     // box.style.transition = "5s";
+            //     box.style.width = "100%";
+            //     box.style.height = "300px";
+            //     box.style.background = "red";
+            //     // box.style.position = "absolute";
+            //     document.body.appendChild(box);
+            // }
+            // else{
+            //     btn.classList.remove("on");
+            //     // btn.classList.add("off");
+            //     document.querySelector("#new").classList.replace("o","c");
+            //     document.querySelector("#new").style.height = "0";
+            //     // document.querySelector("#new").remove();
+            // }
+
+            
+        })
+
+        window.addEventListener('click', (event) => {
+            if(!event.target.matches("#btn")){
+                sub.classList.remove("h");
+            }
+        })
+    </script>
+</body>
+</html>
